@@ -1,5 +1,6 @@
 package se.lexicon.model;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class Book {
@@ -12,19 +13,19 @@ public class Book {
     private Person borrower;
 
     // Constructors
-    public Book(String title, String author){
+    public Book(String title, String author) {
+        this.title = Objects.requireNonNull(title, "Title cannot be null");
+        this.author = Objects.requireNonNull(author, "Author cannot be null");
         this.id = generateId();
         this.available = true;
-        setTitle(title);
-        setAuthor(author);
-        setBorrower(borrower);
     }
 
-    public Book(String title, String author, Person borrower){
-        this.id = generateId();
-        this.available = true;
-        setTitle(title);
-        setAuthor(author);
+    public Book(String title, String author, Person borrower) {
+        this(title, author);
+        // this.id = generateId();
+        // this.title = Objects.requireNonNull(title, "Title cannot be null");
+        // this.author = Objects.requireNonNull(author, "Author cannot be null");
+        // this.available = true;
         setBorrower(borrower);
     }
 
@@ -41,24 +42,12 @@ public class Book {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public boolean isAvailable() {
         return available;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
     }
 
     public Person getBorrower() {
@@ -66,17 +55,38 @@ public class Book {
     }
 
     public void setBorrower(Person borrower) {
-        setAvailable(true);
         this.borrower = borrower;
-        if(borrower != null) {
-            setAvailable(false);
-        }
+        this.available = (borrower == null);
     }
 
-    public String getBookInformation(){
-        return "ID: " + id + ", Title: " + title + ", Author: " + author + ", Available: " + available;
+    /*
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+    */
+
+    public String getBookInformation() {
+        return "ID: " + id + ", Title: " + title + ", Author: " + author + "\n" +
+                "Available: " + available + ", Borrower: " +
+                (borrower != null ? " PersonId: " + borrower.getPersonId() : "none");
     }
 
+    /*
+    public String getBookInformation() {
+        return "Book{ id=" + id + ", title=" + title + ", author=" + author + ", available=" + available +
+                ", borrower=" + (borrower != null ? " PersonId: " + borrower.getPersonId() : "-") + " } ";
+    }
 
-    // todo: needs completion
+    public String getBookInformation() {
+        String borrowerInfo = borrower != null ? " PersonId: " + borrower.getPersonId() : "-";
+        return String.format("Book{ id=%s, title=%s, author=%s, available=%b, borrower=%s }", id, title, author, available, borrowerInfo);
+    }
+    */
+
 }

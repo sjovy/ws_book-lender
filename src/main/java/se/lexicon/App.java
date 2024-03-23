@@ -5,40 +5,39 @@ import se.lexicon.model.Person;
 
 public class App {
     public static void main(String[] args) {
-        // todo: needs completion
 
-        // Create a book instance
-        // Display book information
+        Book book1 = new Book("Kärleksbibeln", "Daniel");
+        System.out.println("\n" + book1.getBookInformation());
+        Book book2 = new Book("Bilar och bussar", "Elnaz");
+        System.out.println("\n" + book2.getBookInformation());
 
-        // Create a person instance
         Person P1 = new Person("Thomas", "Sjövy");
         System.out.println("\n" + P1.getPersonInformation());
         Person P2 = new Person("Lasse", "Karlsson");
         System.out.println("\n" + P2.getPersonInformation());
 
-        Book Book1 = new Book("Kärleksbibeln", "Daniel");
-        System.out.println("\n" + Book1.getBookInformation());
+        P1.loanBook(book1);
+        System.out.println("\n" + P1.getPersonInformation());
+        System.out.println("\n" + book1.getBookInformation());
 
-        Book Book3 = new Book("Bilar och bussar", "Elnaz", P1);
-        System.out.println("\n" + Book3.getBookInformation());
+        P1.returnBook(book1);
+        System.out.println("\n" + P1.getPersonInformation());
+        System.out.println("\n" + book1.getBookInformation());
 
-        Book1.setBorrower(P2);
-        System.out.println("\n" + Book1.getBookInformation());
 
-        Book1.setBorrower(null);
-        System.out.println("\n" + Book1.getBookInformation());
+        //Book Book1 = new Book("Kärleksbibeln", "Daniel");
+        //System.out.println("\n" + Book1.getBookInformation());
 
-        // Display person information
+        //Book Book3 = new Book("Bilar och bussar", "Elnaz", P1);
+        //System.out.println("\n" + Book3.getBookInformation());
 
-        // Loan a book to the person
+        //Book1.setBorrower(P2);
+        //System.out.println("\n" + Book1.getBookInformation());
 
-        // Display person information after borrowing a book
-        // Display book information after borrowing a book
+        //Book1.setBorrower(null);
+        //System.out.println("\n" + Book1.getBookInformation());
 
-        // Return the borrowed book
 
-        // Display person information after returning the book
-        // Display book information after borrowing a book
 
     }
 
