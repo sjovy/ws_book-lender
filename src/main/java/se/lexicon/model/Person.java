@@ -44,6 +44,11 @@ public class Person {
 
     public void setLastName(String lastName) {
         if (lastName == null) throw new IllegalArgumentException("LastName cannot be null");
+        // Question 2B: Compare to 2A, and why no Scope brackets?
+        // (lastName == null ? throw new IllegalArgumentException("LastName cannot be null") : "none");
+        // if (lastName == null) {
+        //     throw new IllegalArgumentException("LastName cannot be null");
+        // }
         this.lastName = lastName;
     }
 
@@ -59,7 +64,6 @@ public class Person {
         Book[] newArray = Arrays.copyOf(borrowedBooks, borrowedBooks.length + 1);
         newArray[newArray.length - 1] = book;
         borrowedBooks = newArray;
-
     }
 
     public void returnBook(Book book) {

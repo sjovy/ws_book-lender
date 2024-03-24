@@ -54,6 +54,7 @@ public class Book {
         return borrower;
     }
 
+    // Question 1 (good pracice?):
     public void setBorrower(Person borrower) {
         this.borrower = borrower;
         this.available = (borrower == null);
@@ -74,6 +75,7 @@ public class Book {
     public String getBookInformation() {
         return "ID: " + id + ", Title: " + title + ", Author: " + author + "\n" +
                 "Available: " + available + ", Borrower: " +
+                // Question 2A (some kind of if statement) and Question 3 (is this good practice?):
                 (borrower != null ? " PersonId: " + borrower.getPersonId() : "none");
     }
 
