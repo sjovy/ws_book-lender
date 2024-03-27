@@ -14,6 +14,7 @@ public class Book {
 
     // Constructors
     public Book(String title, String author) {
+        // Objects is the mother of all classes, contains some standard functionality
         this.title = Objects.requireNonNull(title, "Title cannot be null");
         this.author = Objects.requireNonNull(author, "Author cannot be null");
         this.id = generateId();
@@ -30,6 +31,7 @@ public class Book {
     }
 
     // Methods
+    // generate random ID, 7 figures
     private String generateId() {
         return UUID.randomUUID().toString().substring(0, 8).toUpperCase();
     }
@@ -54,7 +56,7 @@ public class Book {
         return borrower;
     }
 
-    // Question 1 (good pracice?):
+    // Question 1 (good practice?):
     public void setBorrower(Person borrower) {
         this.borrower = borrower;
         this.available = (borrower == null);
